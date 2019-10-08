@@ -9,12 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/ch06")
 public class Ch06Controller {
-	
 		@RequestMapping("/content")
 		public String content() {
 			return "ch06/content";
 		}
-		
 		@PostMapping("/login")
 		public String login(String mid, String mpassword, HttpSession session) {
 			String loginResult = "";
@@ -27,16 +25,12 @@ public class Ch06Controller {
 			} else {
 				loginResult = "wrongMid";
 			}
-			
 			session.setAttribute("loginResult", loginResult);
-			
 			return "redirect:/ch06/content";//요청을 다시 해달라는 뜻
 		}
-		
 		@RequestMapping("/logout")
 		public String logout(HttpSession session) {
 			session.removeAttribute("loginResult");
 			return "redirect:/ch06/content";
 		}
-		
 }
