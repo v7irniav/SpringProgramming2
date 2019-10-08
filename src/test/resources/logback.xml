@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!-- 로그백 자체 내부의 상태를 출력하지 않도록 설정 -->
+	<statusListener
+		class="ch.qos.logback.core.status.NopStatusListener" /><!-- NopStatusListener 애는 출력을 안한다 -->
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%-5level %logger{0}.%M\(\) - %msg%n</pattern><!--logger는 클래스 
+				이름 c를 사용해도 된다 -->
+		</encoder>
+	</appender>
+
+	<root level="info"><!--루트 : 기본적으로 이 프로젝트의 로고 레벨을 -->
+		<appender-ref ref="STDOUT" /><!--STDOUT이 이름을 가지고 잇는 어팬드의 속성을 
+			따르겠다 -->
+	</root>
+</configuration>

@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion><!--메이븐 버전 -->
+	<groupId>com.mycompany</groupId><!--이 프로젝트를 만든 회사 -->
+	<artifactId>SpringProgramming2</artifactId><!--프로젝트 명 -->
+	<version>1.0</version><!--버전은 붙이기 나름 -->
+	<packaging>war</packaging><!--개발 다 하고 나서 최종 사출물 -->
+
+	<!--외존성(jar)을 설정하는 법 -->
+	<dependencies><!--외존성 태그들을 감싸는것 -->
+		<!-- <dependency> <groupId>log4j</groupId>이회사에서 <artifactId>log4j</artifactId>이 
+			주제의 jar <version>1.2.17</version>이 버전을 </dependency> -->
+
+		<!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-log4j12</artifactId> 
+			<version>1.7.28</version> <scope>test</scope어떰 범위에서 이것을 사용할것인가 없어도 되며 전체범위에서 
+			사용가능하다 그리고 runtime을 써줘도 된다. </dependency> -->
+
+		<!-- <dependency> <groupId>org.apache.logging.log4j</groupId> <artifactId>log4j-slf4j-impl</artifactId> 
+			<version>2.12.1</version> </dependency> -->
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>5.2.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+	</dependencies>
+
+
+
+	<build><!--현재 이 프로젝트를 어떻게 빌드 할것인가 --><!--컴파일은 소스파일을 기계어로 바꾸는것 빌드는 최종실행가능한 상태로 만드는것 -->
+		<!-- 빌드 안에는 여러가지 작업들이 있다. 그런 작업들이 하나의 플로그인에 정의되어 있다. -->
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId><!--자바 컴파일 -->
+				<version>3.8.0</version>
+				<configuration>
+					<source>1.8</source><!--자바를 1.8로 컴파일 하겠다 -->
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId><!--war로 압축시켜주는 컴파일 -->
+				<version>3.2.1</version>
+				<configuration>
+					<warSourceDirectory>WebContent</warSourceDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Appenders --><!-- 어디다 추가 할건가-->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender"><!-- class="org.apache.log4j.ConsoleAppender": 이용한다는것  -->
+		<param name="Target" value="System.out" /><!--value="System.out" : 콘솔에다가 출력하라는 뜻,   -->
+		<layout class="org.apache.log4j.PatternLayout"><!-- 어떤 패턴으로 출력시키겠다는 뜻 -->
+			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+			<!--value="%-5p: %c - %m%n" : 출력방식 -는 왼쪽 정렬, 5p는 5칸을 비워둬라,
+			 c는 클래의 약자, -는 그대로 출력, %m 출력내용, %n개행(내려서 출력) -->
+		</layout>
+	</appender>
+
+	<!-- Application Loggers  --><!-- 이건 따로따로 지정하고 싶다 -->
+	<logger name="com.mycompany.web.controller"><!--name 패키지 이름 -->
+		<level value ="error"/>
+		<appender-ref ref="console"/><!-- appender(console)를 참조해서 출력해라 -->
+	</logger>
+	
+		<logger name="com.mycompany.web.dao"><!--name 패키지 이름 -->
+		<level value ="info"/>
+		<appender-ref ref="console"/><!-- appender(console)를 참조해서 출력해라 -->
+	</logger>
+	
+	
+	<!-- Root Logger --><!-- 이건 전체 로고 레벨을 사용할때 -->
+	<!-- <root> 
+		<priority value="debug" />value="info":로고레벨(심각성)  dubug를 입력하면 그 이상의 심각성은 다 나온다
+		<appender-ref ref="console" />
+	</root> -->
+	
+</log4j:configuration>

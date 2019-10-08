@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>SpringProgramming2</display-name>
+	
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class><!--스프링에서 제공하는 필터를 쓰겠다  -->
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>	
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	
+	
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class><!--DispatcherServlet는 스프링 설정파일을 요구한다  -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name><!-- DispatcherServlet를 내부적으로 사용하는 애를 넣어줘야 한다 -->
+			<param-value>/WEB-INF/spring/servlet-context.xml</param-value><!--스프링 설정파일 경로  -->
+			<!-- servlet-context.xml를 위에 DispatcherServlet가 사용하게 설정한것 -->
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!-- 서블릿 맵핑 -->
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+</web-app>
