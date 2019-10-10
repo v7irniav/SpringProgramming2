@@ -28,4 +28,7 @@
 	<!-- 모든 패키지를 감싸고 있는 패키지 루트 패키지라고 한다  -->
 	<!-- 서버가 실행될때 @가 붙어 있는것들을 찾아서 객체로 만든다 -->
 
+	
+	<!--멀티 파트를 해석하는 멀티파트 구현체  -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 </beans>

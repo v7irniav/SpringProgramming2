@@ -18,10 +18,43 @@
 				function btnLogout(){
 					location.href = "logout";
 				}
+				function jsonDownload1(){
+					$.ajax({
+						url: "jsonDownload1",
+						success: function(data){//제이슨의 데이터를 각각의 데이터로서 집어 넣어준다
+							var html = "";//이리작성하면 누를대 마다 한개식 추가가 된다.
+							html += "<tr>";
+							html += "<td>" + data.bno +"</td>";
+							html += "<td>" + data.btitle +"</td>";
+							html += "<td>" + data.writer +"</td>";
+							html += "<td>" + data.date +"</td>";
+							html += "<td>" + data.hitcount +"</td>";
+							html += "</tr>";
+							$("tbody").append(html);
+						}
+					})
+				}
+				
+				function jsonDownload2(){
+					$.ajax({
+						url: "jsonDownload2",
+						success: function(data){//제이슨의 데이터를 각각의 데이터로서 집어 넣어준다
+							var html = "";//이리작성하면 누를대 마다 한개식 추가가 된다.
+							html += "<tr>";
+							html += "<td>" + data.bno +"</td>";
+							html += "<td>" + data.btitle +"</td>";
+							html += "<td>" + data.writer +"</td>";
+							html += "<td>" + data.date +"</td>";
+							html += "<td>" + data.hitcount +"</td>";
+							html += "</tr>";
+							$("tbody").append(html);
+						}
+					})
+				}
 			</script>
 		</head>	
 		<body>
-			<h5>[content.jsp]</h5>
+			<h5>[HttpSession을 이용해서 로그인 구현]</h5>
 			<div>
 				<c:if test="${loginResult != 'success'}"><!--test값이 트루가 되면 실행된다.  -->
 							<form id="loginForm" method="post" action="login">
@@ -47,6 +80,36 @@
 				<button onclick="btnLogout()" class="btn btn-danger">로그아웃</button>
 			</div>
 			</c:if>
+			</div>
+			
+			<h5>[OutputStream을 이용해서 파일 다운로드 구현]</h5>
+			<div>
+				<img src="<%=application.getContextPath()%>/resources/image/Desert.jpg" width="100"/><!--고정 이미지  -->
+				<br/>
+				<img src="fileDownload?fname=Desert.jpg" width="100"><!--이건 컨트롤러를 실행하는것  -->
+				<br/>
+				<a href="fileDownload?fname=Desert.jpg">파일 다운로드</a>
+				<br/>
+			</div>
+			<br/>
+			
+			<h5>[Writer를 이용해 JSON 데이터 다운로드]</h5>
+			<a href="javascript:jsonDownload1()">JSP에서 생성</a> <br/>
+			<a href="javascript:jsonDownload2()">Controller에서 생성</a> <br/>
+			<div>
+				<table class="table table-sm">
+	<thead>
+		<tr>
+			<th scope="col">번호</th>
+			<th scope="col">제목</th>
+			<th scope="col">글쓴이</th>
+			<th scope="col">날짜</th>
+			<th scope="col">조회수</th>
+		</tr>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
 			</div>
 		</body>
 </html>

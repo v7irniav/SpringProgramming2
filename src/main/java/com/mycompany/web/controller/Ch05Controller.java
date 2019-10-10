@@ -20,7 +20,7 @@ public class Ch05Controller {
 	}
 	
 	@RequestMapping("/getBoardList")
-	public String getBoardList(int pageNo, Model model) {//스프링에서 m에 대해 해당하는건 데이타 이다
+	public String getBoardList(int pageNo, Model model) {//스프링에서 m에 대해 해당하는건 데이타 이다//jsp로 데이터를 넘기기 위해 모델을 쓴다
 		int startNo = (pageNo-1)*10+1;
 		int endNo = pageNo*10;
 		
