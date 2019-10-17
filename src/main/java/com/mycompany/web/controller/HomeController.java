@@ -2,8 +2,11 @@ package com.mycompany.web.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.mycompany.web2.service.Ch09CommonService;
 
 @Controller // 클래스 선언, 메소드 선언 위에다가 작성된것들을 어노테이션이라 한다
 //어노테이션도 자바 코드이다. 스프링에서 제공해주는 것들이다
@@ -19,12 +22,14 @@ public class HomeController {//컨트롤러는 요청을 처리하는 역할을 
 		logger.debug("실행test");
 	}
 	
-	
+	@Autowired
+	private Ch09CommonService ch09CommonService;
 	
 	@RequestMapping("/")// / 앞에 컨텍스트 이름까지 생략되어 있다.
 	//이 메소드를 언제 실행해야 한다 는 뜻으로 ("/")는 요청 경로이다
 	public String home() {//메소드 이름은 중요치 않다.
 		logger.debug("실행");
+		ch09CommonService.method1();
 		return "home";//home 뷰 이름 /WEB-INF/views가 앞에 붙여진거고 .jsp가 뒤에 붙여 진거다
 		//파일 이름은 리턴값이랑 똑같아야 한다
 	}

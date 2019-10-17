@@ -18,11 +18,11 @@
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"><!--컨트롤러가 리턴하는 값에  -->
 		<!--InternalResourceViewResolver는 내부파일에서 뷰파일(.jsp)해석하는 자  -->
-		<property name="prefix" value="/WEB-INF/views/" /><!-- 앞에 벨류값을 붙이겠다  -->
+		<property name="prefix" value="/WEB-INF/views2/" /><!-- 앞에 벨류값을 붙이겠다  -->
 		<property name="suffix" value=".jsp" /><!-- 뒤에 벨류 값을 붙이겠다  -->
 	</bean>
 	
-	<context:component-scan base-package="com.mycompany.web" /><!--component는 자바 객체 scan은 위에서 아래로 찾아검색하는 것  -->
+	<context:component-scan base-package="com.mycompany.web2" /><!--component는 자바 객체 scan은 위에서 아래로 찾아검색하는 것  -->
 	<!-- base-package="com.mycompany.web" 이 패키지 밑에 있는 모든 패키지의 스프링을 관리하라 -->
 	<!-- 즉 안에서 클래스 안에 @Controller가 붙여 있는것만 해당 된다. -->
 	<!-- 모든 패키지를 감싸고 있는 패키지 루트 패키지라고 한다  -->

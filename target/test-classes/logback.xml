@@ -11,7 +11,7 @@
 		</encoder>
 	</appender>
 
-	<root level="info"><!--루트 : 기본적으로 이 프로젝트의 로고 레벨을 -->
+	<root level="debug"><!--루트 : 기본적으로 이 프로젝트의 로고 레벨을 -->
 		<appender-ref ref="STDOUT" /><!--STDOUT이 이름을 가지고 잇는 어팬드의 속성을 
 			따르겠다 -->
 	</root>
