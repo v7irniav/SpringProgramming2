@@ -4,5 +4,26 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<bean id="ch09CommonService" class="com.mycompany.web2.service.Ch09CommonService"/>
-
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close"><!--인터페이스 -->
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>	
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/><!--다른 곳에 접속하고 싶을시 localhost를 아이피 주소로 바꾸면 된다.  -->
+		<property name="username" value="user"/>
+		<property name="password" value="iot12345"/>
+		<property name="initialSize" value="1"/><!--디플로이 될때 만들어지는 서버수  -->
+		<property name="maxTotal" value="2" /><!--최대 접속자 수  -->
+		<property name="maxIdle" value="2" /><!-- 최대 감소 수  initialSize사이즈랑 같이 주는게 좋다-->
+	</bean>
+		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<property name="dataSource" ref="dataSource"/><!-- 위에 dataSource는 객체를 여기다 주입  -->
+			<property name="mapperLocations" value="/WEB-INF/mybatis/*.xml"/><!-- 여기있는 xml파일을 매핑  매퍼 파일 -->
+		</bean>
+		
+		<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+			<constructor-arg ref="sqlSessionFactory"/><!--생성자 주입  -->
+		</bean><!--실제로 사용하는 객체 -->
+		
+		<!--데이타 소스만 잘 만들면 된다  -->
+		
 </beans>
