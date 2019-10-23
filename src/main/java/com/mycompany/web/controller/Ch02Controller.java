@@ -15,7 +15,7 @@ public class Ch02Controller {
 	@RequestMapping("/content")//"/ch02/content"를 요청했을대 content()메소드를 실행하겠다
 	public String content() {
 		logger.debug("실행");
-		return "ch02/content";
+		return "ch02/content";//
 		
 	}
 	
